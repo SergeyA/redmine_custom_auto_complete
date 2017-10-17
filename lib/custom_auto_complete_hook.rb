@@ -9,8 +9,8 @@ class CustomAutoCompleteHookListener < Redmine::Hook::ViewListener
             html << "<script>\n"
             html << "//<![CDATA[\n"
             html << "observeAutocompleteField(\'issue_custom_field_values_#{field.id}\', \'#{Redmine::Utils.relative_url_root}/custom_auto_complete/search?project_id=#{context[:issue].project_id}&custom_field_id=#{field.id}\');\n"
-            html << "  $(function() { 
-            html << "    $('#' + \'issue_custom_field_values_#{field.id}\').on(\'click\', function() {\n"
+            html << "  $(function() { \n"
+            html << "    $(\'#\' + \'issue_custom_field_values_#{field.id}\').on(\'click\', function() {\n"
             html << "      var self = $(this);\n"
             html << "      self\n"
             html << "        .autocomplete(\'option\', \'minLength\', 0)\n"
