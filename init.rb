@@ -3,8 +3,8 @@ Redmine::Plugin.register :redmine_custom_auto_complete do
 
   name 'Redmine Custom Auto-Complete plugin'
   author 'Taiki'
-  description 'This plugin adds auto-complete to the custom fields.'
-  version '0.0.1'
+  description 'This plugin adds auto-complete to the custom fields'
+  version '0.0.2'
   url 'https://github.com/taikii/redmine_custom_auto_complete'
   author_url 'https://github.com/taikii'
 
