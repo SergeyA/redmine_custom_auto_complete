@@ -14,7 +14,7 @@ class CustomAutoCompleteHookListener < Redmine::Hook::ViewListener
             html << "      var self = $(this);\n"
             html << "      self\n"
             html << "        .autocomplete(\'option\', \'minLength\', 0)\n"
-            html << "        .autocomplete(\'search\', self.val());\n"
+            html << "        .autocomplete(\'search\', \'\');\n"
             html << "    });\n"
             html << "  });\n"
             html << "//]]>\n"
