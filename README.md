@@ -10,7 +10,7 @@ This plugin adds auto-complete to the custom fields.
 ## Installation
 
 1. Clone or copy files into the Redmine plugins directory
-   `git clone https://github.com/taikii/redmine_custom_auto_complete.git`
+   `git clone https://github.com/SergeyA/redmine_custom_auto_complete.git`
 2. Restart Redmine
 3. Setup the permission for the role
 4. Enable module for your project
