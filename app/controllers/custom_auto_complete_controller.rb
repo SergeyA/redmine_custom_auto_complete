@@ -8,7 +8,7 @@ class CustomAutoCompleteController < ApplicationController
 
     @issues = @page.text.split(/[\r\n]+/)
       .each_with_index
-      .map {|x, i| { 'id' => i, 'value' => x.split(/\s/).first } }
+      .map {|x, i| OpenStruct.new({id: i, value: x.split(/\s/).first}) }
 
     render :layout => false
   end
