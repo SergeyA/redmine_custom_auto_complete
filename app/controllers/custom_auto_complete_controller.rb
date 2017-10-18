@@ -5,7 +5,7 @@ class CustomAutoCompleteController < ApplicationController
 
   def search
     begin  
-      @page = Wiki.find_page("Builds", project => params[:project_id])
+      @page = Wiki.find_page("Builds", :project => params[:project_id])
 
       @issues = @page.text.split(/[\r\n]+/)
         .each_with_index
