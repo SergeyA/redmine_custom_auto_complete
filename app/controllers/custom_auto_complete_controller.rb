@@ -9,7 +9,7 @@ class CustomAutoCompleteController < ApplicationController
     @pattern = params[:term].to_s.strip.downcase;
     
     @issues = @page.text.split(/[\r\n]+/)
-      .select { |x| !x.blank }
+      .select { |x| !@x.nil? && !@x.strip.empty? }
       .select { |x| @patter.nil? || @patter.strip.empty? || x.downcase.include?(@pattern) }
       .reverse
       .each_with_index
