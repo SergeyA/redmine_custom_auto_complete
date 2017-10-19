@@ -24,7 +24,7 @@
       <%= text_field_tag 'settings[acfield'+idx.to_s+']', @settings['acfield'+idx.to_s], class: "custom-ac-input" %>
       <span class='custom-ac-label'>Источник: </span>
       <%= text_field_tag 'settings[acsource'+idx.to_s+']', @settings['acsource'+idx.to_s], class: "custom-ac-input" %>
-      <span class='custom-ac-label'>Значения: </span>
+      <span class='custom-ac-label'>Доп. значения: </span>
       <%= text_field_tag 'settings[acvalues'+idx.to_s+']', @settings['acvalues'+idx.to_s], class: "custom-ac-input" %>
     </p>
 <% end %>
