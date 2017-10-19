@@ -1,5 +1,10 @@
 class CustomAutoCompleteHookListener < Redmine::Hook::ViewListener
 
+  def view_layouts_base_html_head(context)
+    css = Setting.redmine_custom_auto_complete['css']
+    "<style type=\"text/css\">#{css}</style>" unless css.nil? or css.empty?
+  end
+  
   def view_issues_form_details_bottom(context={})
     html = ""
     if User.current.allowed_to?(:redmine_custom_auto_complete, Project.find(context[:issue].project_id))
