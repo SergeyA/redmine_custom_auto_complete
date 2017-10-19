@@ -11,6 +11,7 @@ class CustomAutoCompleteController < ApplicationController
     @issues = @page.text.split(/[\r\n]+/)
       .select { |x| !x.nil? && !x.strip.empty? }
       .select { |x| @patter.nil? || @patter.strip.empty? || x.downcase.include?(@pattern) }
+      .uniq
       .reverse
       .each_with_index
       .map { |x, i| OpenStruct.new({id: i, value: x.split(/\s/).first}) }
