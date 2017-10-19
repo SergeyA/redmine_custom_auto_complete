@@ -10,7 +10,7 @@
     }
     
     span.custom-ac-label {
-        margin-left: 30px;
+        margin-left: 20px;
     }
     
     .custom-css-input {
@@ -32,5 +32,5 @@
 <p>
   <label>Пользовательские CSS стили</label>
   <br/>
-  <%= text_area_tag 'settings[css]', @settings['css'] %>
+  <%= text_area_tag 'settings[css]', @settings['css'], class: "custom-css-input" %>
 </p>
