@@ -18,9 +18,9 @@
     }    
 </style>
 
-<% 4.times do |idx| %>
+<% 5.times do |idx| %>
     <p>
-      <label class='custom-ac-label'>Поле для автозаполнения: </label>
+      <label class='custom-ac-label'>Поле для автозаполнения: <%=idx.to_s%></label>
       <%= text_field_tag 'settings[acfield'+idx.to_s+']', @settings['acfield'+idx.to_s], class: "custom-ac-input" %>
       <span class='custom-ac-label'>Источник: </span>
       <%= text_field_tag 'settings[acsource'+idx.to_s+']', @settings['acsource'+idx.to_s], class: "custom-ac-input" %>
