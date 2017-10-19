@@ -27,9 +27,13 @@ class CustomAutoCompleteController < ApplicationController
       else
         pattern = params[:term].to_s.strip.downcase
         
-        # .concat values.to_s.split(/\;/)
+        allValues = page.text.split(/[\r\n]+/);
         
-        @issues = page.text.split(/[\r\n]+/)
+        if values.to_s.strip.empty? then
+          allValues = allValues + values.to_s.split(/\;/);
+        end
+          
+        @issues = allValues
           .map { |x| x.to_s.strip.split(/\s/).first }
           .select { |x| !x.empty? }
           .select { |x| pattern.empty? || x.downcase.include?(pattern) }
