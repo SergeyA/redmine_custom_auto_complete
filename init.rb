@@ -8,10 +8,7 @@ Redmine::Plugin.register :redmine_custom_auto_complete do
   url 'https://github.com/taikii/redmine_custom_auto_complete'
   author_url 'https://github.com/taikii'
 
-  settings :default => {
-      :css => "/*\nh2{\ncolor:red;\n}\n*/",
-  },
-  :partial => 'settings/custom_auto_complete'
+  settings :default => { :css => '' }, :partial => 'settings/custom_auto_complete'
   
   project_module :redmine_custom_auto_complete do
     permission :redmine_custom_auto_complete, :custom_auto_complete => [:search], :require => :member
