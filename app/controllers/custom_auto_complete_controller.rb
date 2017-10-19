@@ -18,7 +18,7 @@ class CustomAutoCompleteController < ApplicationController
     end
     
     if source.to_s.strip.empty? then
-      @issues = Issue.find_by_sql(["select max(issues.id) as id, custom_values.value as value, count(*) as count from custom_values, issues where issues.project_id = ? and custom_values.customized_id = issues.id and custom_values.custom_field_id = ? and lower(custom_values.value) like lower(?) group by custom_values.value order by max(issues.updated_on) desc", params[:project_id], params[:custom_field_id], "%#{params[:term]}%"])            
+      @issues = Issue.find_by_sql(["select max(issues.id) as id, custom_values.value as value from custom_values, issues where issues.project_id = ? and custom_values.customized_id = issues.id and custom_values.custom_field_id = ? and lower(custom_values.value) like lower(?) group by custom_values.value order by max(issues.updated_on) desc", params[:project_id], params[:custom_field_id], "%#{params[:term]}%"])            
     else
       page = find_wikipage(source.to_s.strip)
       
@@ -27,9 +27,10 @@ class CustomAutoCompleteController < ApplicationController
       else
         pattern = params[:term].to_s.strip.downcase
         
+        # .concat values.to_s.split(/\;/)
+        
         @issues = page.text.split(/[\r\n]+/)
           .map { |x| x.to_s.strip.split(/\s/).first }
-          .concat values.to_s.split(/\;/)
           .select { |x| !x.empty? }
           .select { |x| pattern.empty? || x.downcase.include?(pattern) }
           .uniq
