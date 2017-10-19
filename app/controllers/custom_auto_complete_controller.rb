@@ -29,7 +29,7 @@ class CustomAutoCompleteController < ApplicationController
         
         allValues = page.text.split(/[\r\n]+/);
         
-        if values.to_s.strip.empty? then
+        if !values.to_s.strip.empty? then
           allValues = allValues + values.to_s.split(/\;/);
         end
           
