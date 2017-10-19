@@ -6,6 +6,7 @@
     
     .custom-ac-label {
         margin-rigth: 10px;
+        font-weight: bold;
     }
     
     .custom-css-input {
@@ -17,9 +18,9 @@
     <p>
       <label class='custom-ac-label'>Поле для автозаполнения: </label>
       <%= text_field_tag 'settings[acfield'+idx.to_s+']', @settings['acfield'+idx.to_s], class: "custom-ac-input" %>&nbsp;
-      <label class='custom-ac-label'>Источник: </label>
+      <span class='custom-ac-label'>Источник: </span>
       <%= text_field_tag 'settings[acsource'+idx.to_s+']', @settings['acsource'+idx.to_s] %>
-      <label class='custom-ac-label'>Значения: </label>
+      <span class='custom-ac-label'>Значения: </span>
       <%= text_field_tag 'settings[acvalues'+idx.to_s+']', @settings['acvalues'+idx.to_s] %>
     </p>
 <% end %>
