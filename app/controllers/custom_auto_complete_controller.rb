@@ -11,7 +11,7 @@ class CustomAutoCompleteController < ApplicationController
     @issues = @page.text.split(/[\r\n]+/)
       .map { |x| x.to_s.strip }
       .select { |x| !x.empty? }
-      .select { |x| @patter.empty? || x.downcase.include?(@pattern) }
+      .select { |x| @patter.nil? || @patter.strip.empty? || @patter.empty? || x.downcase.include?(@pattern) }
       .uniq
       .reverse
       .each_with_index
