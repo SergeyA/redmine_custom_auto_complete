@@ -9,14 +9,14 @@ class CustomAutoCompleteController < ApplicationController
     @pattern = params[:term].to_s.strip.downcase;
     
     @issues = @page.text.split(/[\r\n]+/)
-      .map { |x| x.to_s.strip }
+      .map { |x| x.to_s.strip.split(/\s/).first }
       .select { |x| !x.empty? }
-      .select { |x| @pattern.empty? || x.downcase.include?(@pattern) }
+      .select { |x| "1".empty? || x.downcase.include?("1") }
       .uniq
       .reverse
       .each_with_index
-      .map { |x, i| OpenStruct.new({id: i, value: x.split(/\s/).first}) }
-
+      .map { |x, i| OpenStruct.new({ id: i, value: x }) }
+    
     render :layout => false
   end
 
