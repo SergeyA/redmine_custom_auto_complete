@@ -1,33 +1,28 @@
 <style type="text/css">
     .custom-ac-input {
-        width: 200px;
+        width: 150px;
         margin-rigth: 10px;
     }
+    
+    .custom-ac-label {
+        margin-rigth: 10px;
+    }
+    
+    .custom-css-input {
+        min-height: 200px;
+    }    
 </style>
 
-<p>
-  <label>Поле для автозаполнения (Название поля/Источник): </label>
-  <%= text_field_tag 'settings[acfield1]', @settings['acfield1'], class: "custom-ac-input" %>&nbsp;
-  <%= text_field_tag 'settings[acsource1]', @settings['acsource1'] %>
-</p>
-
-<p>
-  <label>Поле для автозаполнения (Название поля/Источник): </label>
-  <%= text_field_tag 'settings[acfield2]', @settings['acfield2'], class: "custom-ac-input" %>&nbsp;
-  <%= text_field_tag 'settings[acsource2]', @settings['acsource2'] %>
-</p>
-
-<p>
-  <label>Поле для автозаполнения (Название поля/Источник): </label>
-  <%= text_field_tag 'settings[acfield3]', @settings['acfield3'], class: "custom-ac-input" %>&nbsp;
-  <%= text_field_tag 'settings[acsource3]', @settings['acsource3'] %>
-</p>
-
-<p>
-  <label>Поле для автозаполнения (Название поля/Источник): </label>
-  <%= text_field_tag 'settings[acfield4]', @settings['acfield4'], class: "custom-ac-input" %>&nbsp;
-  <%= text_field_tag 'settings[acsource4]', @settings['acsource4'] %>
-</p>
+<% 4.times do |idx| %>
+    <p>
+      <label class='custom-ac-label'>Поле для автозаполнения: </label>
+      <%= text_field_tag 'settings[acfield'+idx+']', @settings['acfield'+idx], class: "custom-ac-input" %>&nbsp;
+      <label class='custom-ac-label'>Источник: </label>
+      <%= text_field_tag 'settings[acsource'+idx+']', @settings['acsource'+idx] %>
+      <label class='custom-ac-label'>Значения: </label>
+      <%= text_field_tag 'settings[acvalues'+idx+']', @settings['acvalues'+idx] %>
+    </p>
+<% end %>
 
 <p>
   <label>Пользовательские CSS стили</label>
