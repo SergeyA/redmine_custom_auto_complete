@@ -16,11 +16,11 @@
 <% 4.times do |idx| %>
     <p>
       <label class='custom-ac-label'>Поле для автозаполнения: </label>
-      <%= text_field_tag 'settings[acfield'+idx+']', @settings['acfield'+idx], class: "custom-ac-input" %>&nbsp;
+      <%= text_field_tag 'settings[acfield'+idx.to_s+']', @settings['acfield'+idx.to_s], class: "custom-ac-input" %>&nbsp;
       <label class='custom-ac-label'>Источник: </label>
-      <%= text_field_tag 'settings[acsource'+idx+']', @settings['acsource'+idx] %>
+      <%= text_field_tag 'settings[acsource'+idx.to_s+']', @settings['acsource'+idx.to_s] %>
       <label class='custom-ac-label'>Значения: </label>
-      <%= text_field_tag 'settings[acvalues'+idx+']', @settings['acvalues'+idx] %>
+      <%= text_field_tag 'settings[acvalues'+idx.to_s+']', @settings['acvalues'+idx.to_s] %>
     </p>
 <% end %>
 
