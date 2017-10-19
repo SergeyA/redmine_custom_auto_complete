@@ -1,7 +1,7 @@
 class CustomAutoCompleteController < ApplicationController
   unloadable
 
-  before_filter :find_project, :find_wikipage, :authorize
+  before_filter :find_project, :find_field, :authorize
 
   def search
 
@@ -20,8 +20,6 @@ class CustomAutoCompleteController < ApplicationController
     if source.to_s.strip.empty? then
       @issues = Issue.find_by_sql(["select max(issues.id) as id, custom_values.value as value, count(*) as count from custom_values, issues where issues.project_id = ? and custom_values.customized_id = issues.id and custom_values.custom_field_id = ? and lower(custom_values.value) like lower(?) group by custom_values.value order by max(issues.updated_on) desc", params[:project_id], params[:custom_field_id], "%#{params[:term]}%"])            
     else
-      logger.error("pageName" + source.to_s.strip)
-      
       page = find_wikipage(source.to_s.strip)
       
       if page.nil? then
