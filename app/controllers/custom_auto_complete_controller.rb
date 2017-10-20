@@ -23,12 +23,13 @@ class CustomAutoCompleteController < ApplicationController
       page = find_wikipage(source.to_s.strip)
       
       if page.nil? then
-        render_404
+        @issues = Issue.find_by_sql(["select max(issues.id) as id, custom_values.value as value from custom_values, issues where issues.project_id = ? and custom_values.customized_id = issues.id and custom_values.custom_field_id = ? and lower(custom_values.value) like lower(?) group by custom_values.value order by max(issues.updated_on) desc", params[:project_id], params[:custom_field_id], "%#{params[:term]}%"])            
       else
         pattern = params[:term].to_s.strip.downcase
         
         allValues = page.text
           .split(/[\r\n]+/)
+          .select { |x| !x.start_with?("//") }
           .map { |x| x.to_s.strip.split(/\s/).first };
         
         if !values.to_s.strip.empty? then
